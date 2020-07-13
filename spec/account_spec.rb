@@ -1,13 +1,16 @@
 require 'account'
 
 describe Account do
-  it "exists (can be initialized)" do
-    account = Account.new
-    expect(account).to be
-  end
 
-  it "initializes with a balance of 0" do
+  context "A new account is set up" do
     account = Account.new
-    expect(account.balance). to eq(0)
+
+    it "exists (can be initialized)" do
+      expect(account).to be
+    end
+
+    it "initializes with a balance of 0" do
+      expect(account.balance). to eq(0)
+    end
   end
 end
