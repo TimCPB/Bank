@@ -24,6 +24,35 @@ date || credit || debit || balance
 10/01/2012 || 1000.00 || || 1000.00
 ```
 
+## User stories (based on the requirements)
+
+```
+As a customer
+So I can manage my money
+I want to be abel to open an account at the bank
+```
+```
+As a customer
+So I can store my money
+I want to be able to deposit money into my account
+```
+```
+As a customer
+So I can spend my money
+I want to be able to withdraw money from my account
+```
+```
+As a customer
+So I can see a record of my account
+I want to be able to print a statement of my account transactions
+```
+```
+As a customer
+So I can keep track of my finances
+I want a statement that includes dates and balances from each transaction
+```
+
+
 ## Initial Domain Model
 
 <p align="center">
