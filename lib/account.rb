@@ -22,8 +22,15 @@ class Account
   end
 
   # def print_statement
-  #   p "date || credit || debit || balance\n" +
-  #   @transaction_history.each do
+  #   array = @transaction_history.map do |transaction|
+  #     if transaction.type == "deposit"
+  #       "#{transaction.date} || #{transaction.amount} || || #{transaction.new_balance}"
+  #     else
+  #       "#{transaction.date} || || #{transaction.amount} || #{transaction.new_balance}"
+  #     end
+  #   end
+  #   puts "date || credit || debit || balance\n" + array.join("\n")
+  # end
 
   private
 
