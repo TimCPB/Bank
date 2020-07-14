@@ -17,5 +17,9 @@ describe Account do
     it 'receives a deposit' do
       expect(account).to respond_to(:deposit).with(1).argument
     end
+
+    it 'records the transaction history' do
+      expect(account.transaction_history).to eq([])
+    end
   end
 end
