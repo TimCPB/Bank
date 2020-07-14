@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'transaction'
+require_relative 'transaction'
 
 # this is now the top level class
 class Account
@@ -12,7 +12,9 @@ class Account
   end
 
   def deposit(amount)
-    new_balance = @balance + amount
-    Transaction.new(amount, new_balance)
+    @balance += amount
+    Transaction.new(amount, @balance)
   end
+
+  # private set_balance(amount)
 end

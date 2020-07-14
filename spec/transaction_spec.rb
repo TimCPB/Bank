@@ -17,7 +17,7 @@ describe Transaction do
 
   it "contains the date in 'day/month/year' format" do
     allow(Time).to receive(:now).and_return Time.new(2020, 2, 3)
-    transaction = Transaction.new(30, 50)
+    transaction = Transaction.new(30, 50) # repeating line 7, needs to be DRY-ed out
     expect(transaction.date).to eq('03/02/2020')
   end
 end

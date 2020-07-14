@@ -3,8 +3,7 @@
 require 'account'
 
 describe Account do
-  context 'a new account is set up' do
-    account = Account.new
+    let(:account) { Account.new }
 
     it 'exists (can be initialized)' do
       expect(account).to be
@@ -25,5 +24,10 @@ describe Account do
     it 'depositing an amount creates a new instance of Transaction class' do
       expect(account.deposit(20)).to be_instance_of(Transaction)
     end
-  end
+
+    it 'shows a total balance after multiple deposits' do
+      account.deposit(20)
+      account.deposit(30)
+      expect(account.balance).to eq(50)
+    end
 end
