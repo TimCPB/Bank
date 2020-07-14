@@ -3,6 +3,9 @@
 require 'account'
 
 describe Account do
+  before (:each) do
+    allow(Time).to receive(:now).and_return Time.new(2020, 2, 3)
+  end
   let(:account) { Account.new }
 
   it 'exists (can be initialized)' do
@@ -53,6 +56,13 @@ describe Account do
 
     it "making a withdrawl creates an instance of Transaction with the type attribute of 'withdrtawl'" do
       expect(account2.transaction_history[2].type).to eq('withdrawl')
+    end
+
+    it "returns a statement" do
+      expect(account2.print_statement).to output('date || credit || debit || balance
+      15/07/2020 || || 40.00 || 40.00
+      15/07/2020 || 30.00 || || 80.00
+      15/07/2020 || 50.00 || || 50.00').to_stdout
     end
   end
 end
