@@ -12,9 +12,13 @@ class Account
   end
 
   def deposit(amount)
-    @balance += amount
+    set_balance(amount)
     Transaction.new(amount, @balance)
   end
 
-  # private set_balance(amount)
+  private 
+  
+  def set_balance(num)
+    @balance += num
+  end
 end
