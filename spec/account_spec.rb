@@ -21,23 +21,34 @@ describe Account do
     expect(account.transaction_history).to eq([])
   end
 
-  it 'depositing an amount creates a new instance of Transaction class' do
-    expect(account.deposit(20)).to be_instance_of(Transaction)
-  end
-
   it 'shows a total balance after multiple deposits' do
     account.deposit(20)
     account.deposit(30)
     expect(account.balance).to eq(50)
   end
 
-  it 'withdrawing an amount creates a new instance of Transaction class' do
-    expect(account.withdraw(10)).to be_instance_of(Transaction)
-  end
-
   it 'shows a total balance after multiple deposits and withdrawls' do
     account.deposit(40)
     account.withdraw(30)
     expect(account.balance).to eq(10)
+  end
+
+  context 'several transactions' do
+    account2 = Account.new
+    account2.deposit(50)
+    account2.deposit(30)
+    account2.withdraw(40)
+
+    it 'stores all transactions in the transaction_history' do
+      expect(account2.transaction_history.length).to eq(3)
+    end
+
+    it 'depositing an amount creates a new instance of Transaction class' do
+      expect(account2.transaction_history[1]).to be_instance_of(Transaction)
+    end
+
+    it 'withdrawing an amount creates a new instance of Transaction class' do
+      expect(account2.transaction_history[2]).to be_instance_of(Transaction)
+    end
   end
 end

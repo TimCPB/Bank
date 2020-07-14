@@ -13,12 +13,12 @@ class Account
 
   def deposit(amount)
     add_to_balance(amount)
-    Transaction.new(amount, @balance)
+    @transaction_history.push(Transaction.new(amount, @balance))
   end
 
   def withdraw(amount)
     deduct_from_balance(amount)
-    Transaction.new(amount, @balance)
+    @transaction_history.push(Transaction.new(amount, @balance))
   end
 
   private
