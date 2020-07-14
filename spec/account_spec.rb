@@ -21,5 +21,9 @@ describe Account do
     it 'records the transaction history' do
       expect(account.transaction_history).to eq([])
     end
+
+    it 'depositing an amount creates a new instance of Transaction class' do
+      expect(account.deposit(20)).to be_instance_of(Transaction)
+    end
   end
 end
