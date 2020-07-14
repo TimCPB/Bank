@@ -16,6 +16,10 @@ class Account
     Transaction.new(amount, @balance)
   end
 
+  def withdraw(amount)
+    Transaction.new(amount, @balance)
+  end
+
   private
 
   def add_to_balance(num)

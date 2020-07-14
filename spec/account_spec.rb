@@ -31,9 +31,9 @@ describe Account do
     expect(account.balance).to eq(50)
   end
 
-  # it 'withdrawing an amount creates a new instance of Transaction class' do
-  #   expect(account.withdraw(20)).to be_instance_of(Transaction)
-  # end
+  it 'withdrawing an amount creates a new instance of Transaction class' do
+    expect(account.withdraw(10)).to be_instance_of(Transaction)
+  end
 
   # it 'shows a total balance after multiple deposits' do
   #   account.deposit(20)
