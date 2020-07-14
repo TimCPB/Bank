@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'transaction'
-# require_relative 'statement'
+require_relative 'statement'
 
 # this is now the top level class
 class Account
@@ -22,16 +22,10 @@ class Account
     @transaction_history.push(Transaction.new(amount, @balance, 'withdrawl'))
   end
 
-  # def print_statement
-  #   array = @transaction_history.map do |transaction|
-  #     if transaction.type == "deposit"
-  #       "#{transaction.date} || #{transaction.amount} || || #{transaction.new_balance}"
-  #     else
-  #       "#{transaction.date} || || #{transaction.amount} || #{transaction.new_balance}"
-  #     end
-  #   end
-  #   puts "date || credit || debit || balance\n" + array.join("\n")
-  # end
+  def print_statement
+    statement = Statement.new(@transaction_history)
+    puts statement.generate_statement
+  end
 
   private
 
