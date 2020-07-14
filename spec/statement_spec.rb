@@ -23,7 +23,12 @@ describe Statement do
   end
 
   it 'prints a string for each element of @transaction_array' do
-    expect(statement.generate_statement).to include('date || credit || debit || balance', '14/07/2020 || 30 || || 50',
-                                                    '14/07/2020 || || 10 || 40')
+    expect(statement.generate_statement).to include('date || credit || debit || balance',
+                                                    '14/07/2020 || || 10.00 || 40.00',
+                                                    '14/07/2020 || 30.00 || || 50.00')
+  end
+
+  it 'prints the transactions in reverse order' do
+    expect(statement.generate_statement).to end_with '20.00'
   end
 end

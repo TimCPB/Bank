@@ -7,11 +7,11 @@ describe Transaction do
     transaction = Transaction.new(20, 40)
 
     it 'initializes with an amount' do
-      expect(transaction.amount).to eq(20)
+      expect(transaction.amount).to eq('20.00')
     end
 
     it 'initializes with a new balance' do
-      expect(transaction.new_balance).to eq(40)
+      expect(transaction.new_balance).to eq('40.00')
     end
 
     it "initializes with a default type of 'deposit'" do

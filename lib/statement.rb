@@ -10,7 +10,7 @@ class Statement # :nodoc:
   end
 
   def generate_statement
-    join_with_header(@transaction_array.map { |transaction| generate_string(transaction) })
+    join_with_header(@transaction_array.reverse.map { |transaction| generate_string(transaction) })
   end
 
   private
