@@ -13,6 +13,10 @@ describe Transaction do
     it 'initializes with a new balance' do
       expect(transaction.new_balance).to eq(40)
     end
+
+    it "initializes with a default type of 'deposit'" do
+      expect(transaction.type).to eq('deposit')
+    end
   end
 
   it "contains the date in 'day/month/year' format" do
