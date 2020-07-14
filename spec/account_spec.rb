@@ -35,9 +35,9 @@ describe Account do
     expect(account.withdraw(10)).to be_instance_of(Transaction)
   end
 
-  # it 'shows a total balance after multiple deposits' do
-  #   account.deposit(20)
-  #   account.deposit(30)
-  #   expect(account.balance).to eq(50)
-  # end
+  it 'shows a total balance after multiple deposits and withdrawls' do
+    account.deposit(40)
+    account.withdraw(30)
+    expect(account.balance).to eq(10)
+  end
 end

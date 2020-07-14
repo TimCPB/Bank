@@ -17,12 +17,17 @@ class Account
   end
 
   def withdraw(amount)
+    deduct_from_balance(amount)
     Transaction.new(amount, @balance)
   end
 
   private
 
-  def add_to_balance(num)
-    @balance += num
+  def add_to_balance(number)
+    @balance += number
+  end
+
+  def deduct_from_balance(number)
+    @balance -= number
   end
 end
