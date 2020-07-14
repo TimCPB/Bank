@@ -23,6 +23,7 @@ describe Statement do
   end
 
   it 'prints a string for each element of @transaction_array' do
-    expect(statement.generate_statement).to include('date || credit || debit || balance', '14/07/2020 || 30 || || 50', '14/07/2020 || || 10 || 40')
+    expect(statement.generate_statement).to include('date || credit || debit || balance', '14/07/2020 || 30 || || 50',
+                                                    '14/07/2020 || || 10 || 40')
   end
 end

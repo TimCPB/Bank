@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'transaction'
+require_relative 'transaction'
 
 class Statement # :nodoc:
   attr_reader :transaction_array
@@ -10,17 +10,18 @@ class Statement # :nodoc:
   end
 
   def generate_statement
-    array = @transaction_array.map do |transaction|
-      if deposit?(transaction.type)
-        "#{transaction.date} || #{transaction.amount} || || #{transaction.new_balance}"
-      else
-        "#{transaction.date} || || #{transaction.amount} || #{transaction.new_balance}"
-      end
-    end
-    join_with_header(array)
+    join_with_header(@transaction_array.map { |transaction| generate_string(transaction) })
   end
 
   private
+
+  def generate_string(transaction)
+    if deposit?(transaction.type)
+      "#{transaction.date} || #{transaction.amount} || || #{transaction.new_balance}"
+    else
+      "#{transaction.date} || || #{transaction.amount} || #{transaction.new_balance}"
+    end
+  end
 
   def deposit?(type)
     type == 'deposit'
@@ -29,5 +30,4 @@ class Statement # :nodoc:
   def join_with_header(array)
     "date || credit || debit || balance\n" + array.join("\n")
   end
-
 end
