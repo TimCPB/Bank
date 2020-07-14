@@ -12,6 +12,7 @@ class Account
   end
 
   def deposit(amount)
-    Transaction.new(amount, @balance + amount)
+    new_balance = @balance + amount
+    Transaction.new(amount, new_balance)
   end
 end
