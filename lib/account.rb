@@ -18,8 +18,12 @@ class Account
 
   def withdraw(amount)
     deduct_from_balance(amount)
-    @transaction_history.push(Transaction.new(amount, @balance))
+    @transaction_history.push(Transaction.new(amount, @balance, 'withdrawl'))
   end
+
+  # def print_statement
+  #   p "date || credit || debit || balance\n" +
+  #   @transaction_history.each do
 
   private
 

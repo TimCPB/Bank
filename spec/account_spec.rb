@@ -50,5 +50,9 @@ describe Account do
     it 'withdrawing an amount creates a new instance of Transaction class' do
       expect(account2.transaction_history[2]).to be_instance_of(Transaction)
     end
+
+    it "making a withdrawl creates an instance of Transaction with the type attribute of 'withdrtawl'" do
+      expect(account2.transaction_history[2].type).to eq('withdrawl')
+    end
   end
 end
