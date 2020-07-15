@@ -76,7 +76,7 @@ I want a statement that includes dates and balances from each transaction
 ## Revised Program Model
 
 <p align="center">
-<img src=/images/domain_model_for_bank_challenge.png width=80%>
+<img src=images/2nd_domain_model_for_bank_challenge.png width=80%>
 </p> 
 
 ## Irb User Interaction Screenshot
