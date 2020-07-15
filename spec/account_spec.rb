@@ -56,15 +56,7 @@ describe Account do
     end
 
     it 'print_statement outputs a statement' do
-      account2.print_statement
       expect { account2.print_statement }.to output.to_stdout
     end
-
-    #     it "returns a statement" do
-    #       expect { account2.print_statement }.to output('date || credit || debit || balance
-    # 15/07/2020 || || 40.00 || 40.00
-    # 15/07/2020 || 30.00 || || 80.00
-    # 15/07/2020 || 50.00 || || 50.00').to_stdout
-    #     end
   end
 end

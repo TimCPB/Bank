@@ -11,6 +11,7 @@ describe Statement do
   let(:transaction_array) { [Transaction.new(20, 20), Transaction.new(30, 50), Transaction.new(10, 40, 'withdrawl')] }
   let(:statement) { Statement.new(transaction_array) }
   let(:time) { Time.new(2020, 2, 3).strftime('%d/%m/%Y') }
+  let(:string) { "date || credit || debit || balance\n#{time} || || 10.00 || 40.00\n#{time} || 30.00 || || 50.00" }
 
   it 'stores an array of transaction instances upon instantiation' do
     expect(statement.transaction_array[1]).to be_instance_of(Transaction)
@@ -18,12 +19,10 @@ describe Statement do
   end
 
   it 'prints a string for each element of @transaction_array' do
-    expect(statement.generate_statement).to include('date || credit || debit || balance',
-                                                    "#{time} || || 10.00 || 40.00",
-                                                    "#{time} || 30.00 || || 50.00")
+    expect(statement.generate_statement).to include(string)
   end
 
   it 'prints the transactions in reverse order' do
-    expect(statement.generate_statement).to end_with '20.00'
+    expect(statement.generate_statement).to end_with('20.00')
   end
 end
