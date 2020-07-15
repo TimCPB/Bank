@@ -22,12 +22,16 @@ class Account
     @transaction_history.push(Transaction.new(amount, @balance, 'withdrawl'))
   end
 
-  def print_statement # This needs separating out
-    statement = Statement.new(@transaction_history)
-    puts statement.generate_statement
+  def print_statement
+    create_statement
+    puts @statement
   end
 
   private
+
+  def create_statement
+    @statement = Statement.new(@transaction_history).generate_statement
+  end
 
   def add_to_balance(number)
     @balance += number
