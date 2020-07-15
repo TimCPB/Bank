@@ -24,6 +24,12 @@ date || credit || debit || balance
 10/01/2012 || 1000.00 || || 1000.00
 ```
 
+### Initial Approach
+
+- My first step was to translate the requirements above into user stories to help me conceptualise how a user would interact with the program
+- I then tried to extract the classes, data and actions (methods) from the requirements and user stories and used them to create an initial model, shown below
+- Finally, I added some arrows to the diagram to try and establish how the classes might interact
+
 ## User stories (based on the requirements)
 
 ```
@@ -53,9 +59,43 @@ I want a statement that includes dates and balances from each transaction
 ```
 
 
-## Initial Domain Model
+## Initial Program Model
 
 <p align="center">
 <img src=/images/domain_model_for_bank_challenge.png width=80%>
 </p> 
 
+## Code Structure
+
+- I revised the above model as I progressed through the challenge. Ultimately I decided on three classes: Account, Transaction and Statement
+- I tried to structure the code so that a user would only ever have to interact with the Account class
+- They can open an account, then within that account they can make deposits and withdrawls, and they can print a statement
+- When they make a deposit or a withdrawl an instance of the Transaction class is created and stored in an array as part of the @transaction_history array, all within the account class
+- When they print a statement, an instance of the Statement class is created and the @transaction_history array is passed to it as an argument. The Statement class contains a 'generate_statement' method, which is then called on this instance of Statement and the account's 'print_statement" method outputs the result.
+
+## Revised Program Model
+
+<p align="center">
+<img src=/images/domain_model_for_bank_challenge.png width=80%>
+</p> 
+
+## Irb User Interaction Screenshot
+
+<p align="center">
+<img src=images/irb_user_interaction.png width=80%>
+</p>
+
+## Irb Printed Statement Sreenshot
+
+<p align="center">
+<img src=images/statement.png width=80%>
+</p>
+
+## Areas for Improvement
+
+- The Account class is very long and handles quite a lot of logic. Many of the methods could be simplified further and don't fully comply with the SRP principle. Extracting more of the logic into additional methods is one option but perhaps an additional class is required
+- Some methods in the Statement class could also be separated out to be more SRP compliant
+- The structure of the 'Describe...' blocks within my spec files could be improved. It could be more consistent to make it more readable
+ - EG Better use of 'context' blocks and the syntax used in mocking could also be more consistent
+- Some of the formatting that occurs upon initialization in the Transaction class could be separated out into private methods
+- Several methods just modify instance variables
