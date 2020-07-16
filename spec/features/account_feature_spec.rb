@@ -12,6 +12,7 @@ describe 'feature test' do
 
   it 'a user can deposit, withdraw and print a statement' do
     account.deposit(100)
+    account.deposit(150)
     account.withdraw(20)
     account.print_statement
     expect { account.print_statement }.to output(/#{statement}/).to_stdout

@@ -10,8 +10,7 @@ describe Statement do
 
   let(:transaction_array) { [Transaction.new(20, 20), Transaction.new(30, 50), Transaction.new(10, 40, 'withdrawl')] }
   let(:statement) { Statement.new(transaction_array) }
-  let(:time) { Time.new(2020, 2, 3).strftime('%d/%m/%Y') }
-  let(:string) { "date || credit || debit || balance\n#{time} || || 10.00 || 40.00\n#{time} || 30.00 || || 50.00" }
+  let(:string) { "date || credit || debit || balance\n03/02/2020 || || 10.00 || 40.00\n03/02/2020 || 30.00 || || 50.00" }
 
   it 'stores an array of transaction instances upon instantiation' do
     expect(statement.transaction_array[1]).to be_instance_of(Transaction)
