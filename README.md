@@ -99,3 +99,41 @@ I want a statement that includes dates and balances from each transaction
  - EG Better use of 'context' blocks and the syntax used in mocking could also be more consistent
 - Some of the formatting that occurs upon initialization in the Transaction class could be separated out into private methods
 - Several methods just modify instance variables
+
+## Post-feedback Adjustments
+
+- The unit tests in account_spec.rb are now better isolated. I had been too concerned about DRY-ing out the tests and as such had extracted some of the conditions from several tests into a context block, meaning those tests couldn't be run in isolation. I now realise test isolation is more important and that keeping code DRY is not such a priority in tests
+- I refactored the `print_statement` method in account.rb to make it less 'stateful' and easier to change going forward
+  - it went from:
+ ```
+   def print_statement
+    create_statement
+    puts @statement
+  end
+  
+  private
+  
+  def create_statement
+    @statement = Statement.new(@transaction_history).generate_statement
+  end
+  ```
+   to this:
+  ```
+    def print_statement
+    puts statement
+  end
+  
+  private
+  
+  def statement
+    Statement.new(@transaction_history).generate_statement
+  end
+  ```
+  
+  - I added a feature test in `./spec/features/account_feature.rb`. My aim with this test is to run through all the interactions a user might have with their account in one test
+  - I removed the first four tests from `account_spec.rb` as they were testing implementation rather than the behaviour a user would expect. I realise I often fall back on these sorts of tests in the early stages of a project when I'm a little unsure of how to proceed. Going forward, I will aim to write better tests that focus more on behaviour
+  
+  ## Still To Do
+  
+- Move the formatting responsabilities in transaction class to the statement class, which is where all other fromatting takes place
+- Install Timecop and use it to freeze time for testing purposes, instead of stubbing as I have done
