@@ -19,18 +19,17 @@ class Account
 
   def withdraw(amount)
     deduct_from_balance(amount)
-    @transaction_history.push(Transaction.new(amount, @balance, 'withdrawl'))
+    @transaction_history.push(Transaction.new(amount, @balance, 'withdrawal'))
   end
 
   def print_statement
-    create_statement
-    puts @statement
+    puts statement
   end
 
   private
 
-  def create_statement
-    @statement = Statement.new(@transaction_history).generate_statement
+  def statement
+    Statement.new(@transaction_history).generate_statement
   end
 
   def add_to_balance(number)
