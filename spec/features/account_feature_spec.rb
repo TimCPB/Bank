@@ -8,7 +8,7 @@ describe 'feature test' do
   end
 
   let(:account) { Account.new }
-  let(:statement) { "date || credit || debit || balance\n06/06/2010 || || 20.00 || 80.00\n06/06/2010 || 100.00 || || 100.00" }
+  statement = "date || credit || debit || balance\n06/06/2010 || || 20.00 || 230.00\n06/06/2010 || 150.00 || || 250.00\n06/06/2010 || 100.00 || || 100.00"
 
   it 'a user can deposit, withdraw and print a statement' do
     account.deposit(100)
