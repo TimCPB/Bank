@@ -137,3 +137,4 @@ I want a statement that includes dates and balances from each transaction
   
 - Move the formatting responsabilities in transaction class to the statement class, which is where all other fromatting takes place
 - Install Timecop and use it to freeze time for testing purposes, instead of stubbing as I have done
+- Use dependency injections to fully isolate the testing of the Account class
